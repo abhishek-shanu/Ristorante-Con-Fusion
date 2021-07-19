@@ -5,14 +5,12 @@ import {Loading} from './LoadingComponent';
 import {baseUrl} from '../shared/baseUrl';
 
 function RenderMenuItem({dish,onClick}){
-    // why we have used {} in line 9 after 'to=' also the passing of onClick as parameter here is not sure
-    console.log(baseUrl+dish.image)
     return(
         <Card>
             <Link to={`/menu/${dish.id}`} >
-                <CardImg width="100%" src={baseUrl+dish.image} alt={dish.name} />
+                <CardImg width="100%" height='400px' src={baseUrl+dish.image} alt={dish.name} />
                 <CardImgOverlay>
-                    <CardTitle>{dish.name}</CardTitle>
+                    <CardTitle><h2><span class="badge badge-secondary">{dish.name}</span></h2></CardTitle>
                 </CardImgOverlay>
             </Link>
         </Card>
@@ -37,11 +35,11 @@ const Menu=(props)=>{
                     </div>
                 )
             }
-            else if(props.dishes.isErrMess){
+            else if(props.dishes.errMess){
                 return(
                     <div className='container'>
                         <div className='row'>
-                            <h4>{props.dishes.isErrMess}</h4>
+                            <h4>{props.dishes.errMess}</h4>
                         </div>
                     </div>
                 )
