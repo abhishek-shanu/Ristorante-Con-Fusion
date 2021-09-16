@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Ristorante-Con-Fusion/static/css/main.1a488bcb.chunk.css",
-    "main.js": "/Ristorante-Con-Fusion/static/js/main.7c0015ee.chunk.js",
-    "main.js.map": "/Ristorante-Con-Fusion/static/js/main.7c0015ee.chunk.js.map",
+    "main.js": "/Ristorante-Con-Fusion/static/js/main.25204093.chunk.js",
+    "main.js.map": "/Ristorante-Con-Fusion/static/js/main.25204093.chunk.js.map",
     "runtime-main.js": "/Ristorante-Con-Fusion/static/js/runtime-main.f939a6a4.js",
     "runtime-main.js.map": "/Ristorante-Con-Fusion/static/js/runtime-main.f939a6a4.js.map",
     "static/css/2.fd75ec10.chunk.css": "/Ristorante-Con-Fusion/static/css/2.fd75ec10.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.fd75ec10.chunk.css",
     "static/js/2.d818953b.chunk.js",
     "static/css/main.1a488bcb.chunk.css",
-    "static/js/main.7c0015ee.chunk.js"
+    "static/js/main.25204093.chunk.js"
   ]
 }
