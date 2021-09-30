@@ -38,7 +38,7 @@ const Main=(props)=>{
         props.fetchComments();
         props.fetchPromos();
         props.fetchLeaders();
-    })
+    },[])
     // componentDidMount(){
     //     this.props.fetchDishes();
     //     this.props.fetchComments();
