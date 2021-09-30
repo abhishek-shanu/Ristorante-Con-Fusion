@@ -1,4 +1,4 @@
-import React,{Component, useEffect} from 'react';
+import React,{ useEffect} from 'react';
 import Menu from './MenuComponents';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -38,7 +38,7 @@ const Main=(props)=>{
         props.fetchComments();
         props.fetchPromos();
         props.fetchLeaders();
-    },[])
+    })
     // componentDidMount(){
     //     this.props.fetchDishes();
     //     this.props.fetchComments();
