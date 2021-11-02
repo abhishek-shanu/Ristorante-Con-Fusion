@@ -1,33 +1,36 @@
 package main
 
 import (
-	"resturant/api/handlers"
+	"log"
+	"resturant/api/library"
+	"resturant/api/routes"
 
 	"github.com/gin-gonic/gin"
 )
 
+/*
+Starting point of the server
+All the routes are created here
+and there end points are mentioned in respective
+route file inside routes package
+*/
 func main() {
-	//database.Creat_db()
 	//gin.SetMode(gin.ReleaseMode)
+
+	//initialize the router
 	router := gin.Default()
-	menu := router.Group("/menu")
-	{
-		menu.GET("", handlers.Menu)
-		menu.GET("/img", handlers.MenuImage)
-		menu.GET("/:itemID", handlers.Item)
-		menu.GET("/:itemID/img", handlers.ItemImage)
-	}
+	//endpoints for all menu related request
+	routes.Menu(router)
+	//endpoints for all comment related request
+	routes.Comment(router)
+	//endpoints for all feedback related request
+	routes.Feedback(router)
 
-	comment := router.Group("/comment")
-	{
-		comment.GET("/:itemID", nil)
-		comment.POST("/create", nil)
+	// Start the server with the listening port in config file
+	if listeningPort, err := library.GetListeningPort(); err == nil {
+		router.Run(listeningPort)
+	} else {
+		log.Println("Server could not be started")
+		log.Println(err)
 	}
-
-	feedback := router.Group("/feedback")
-	{
-		feedback.POST("/", nil)
-	}
-	router.Run("localhost:8080")
-
 }

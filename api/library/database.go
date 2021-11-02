@@ -1,13 +1,16 @@
 package library
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
+	"resturant/api/database"
 	"resturant/api/models"
 
 	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg/v10/orm"
 )
 
 // Returns a database configuration
@@ -19,8 +22,7 @@ func GetDBConfig() (dbConfig models.DBConfig, err error) {
 		config         models.Config
 	)
 
-	configFilePath := "D:/Work/Ristorante-Con-Fusion/api/config.json"
-	if configFile, err = os.Open(configFilePath); err != nil {
+	if configFile, err = os.Open(CONFIG_FILE); err != nil {
 		return
 	}
 
@@ -53,6 +55,32 @@ func GetDB() (db *pg.DB, err error) {
 		Database: config.Database,
 	})
 	log.Println("DB connection Successful.")
+
+	return
+}
+
+func BuildDatabase() (err error) {
+
+	var (
+		db *pg.DB
+	)
+
+	if db, err = GetDB(); err != nil {
+		return
+	}
+	defer db.Close()
+
+	//check if connection is established or not
+	ctx := context.Background()
+	if err = db.Ping(ctx); err != nil {
+		log.Println("DB connection failed")
+	} else {
+		log.Println("Connection successful")
+	}
+
+	err = db.Model(&database.Comments{}).CreateTable(&orm.CreateTableOptions{
+		IfNotExists: true,
+	})
 
 	return
 }
